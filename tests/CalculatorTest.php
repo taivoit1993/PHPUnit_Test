@@ -10,11 +10,23 @@ class CalculatorTest extends \PHPUnit\Framework\TestCase
     {
         $this->calculator = new App\Calculator;
     }
-    public function testAdd()
-    {
-        $result = $this->calculator->add(20, 5);
 
-        $this->assertEquals(25, $result);
+    public function addDataProvider(){
+        return array(
+            array(1,2,3),
+            array(0,0,0),
+            array(-1,-1,-3)
+        );
+    }
+
+     /**
+     * @dataProvider addDataProvider
+     */
+    public function testAdd($a, $b, $expected)
+    {
+        $result = $this->calculator->add($a, $b);
+
+        $this->assertEquals($expected, $result);
     }
 
 
